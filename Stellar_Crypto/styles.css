@@ -1,0 +1,71 @@
+{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    text-align: center;
+    background: #211f1ff5;
+}
+
+.header{
+    padding-top: 60px;
+    color: #ddd;
+    font-size: 20px;
+    margin: auto;
+    line-height: 50px;
+}
+
+.sub-container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 48px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.teams{
+    margin: 10px;
+    padding: 22px;
+    max-width: 30%;
+    cursor: pointer;
+    transition: 0.4s;
+    box-sizing: border-box;
+}
+
+.teams:hover{
+    background: #ddd;
+    border-radius:  12px;
+}
+
+.teams img{
+    width: 200px;
+    height: 200px;
+}
+
+.name{
+    padding: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    color:#ddd;
+}
+
+.desig{
+    font-style: italic;
+    color: #888;
+}
+
+.about{
+    margin: 20px 0;
+    font-weight: lighter;
+    color: #ddd;
+}
+
+.ourteam{
+    padding: 12px;
+    font-size: 20px;
+    color: #ddd;
+    line-height: 40px;
+    
+}

@@ -1,0 +1,120 @@
+/* Reset and basic styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url(bg.jpg) no-repeat center center/cover;
+}
+
+.container {
+    text-align: center;
+    background: #373636f5;
+    padding: 20px;
+}
+
+.ourteam {
+    padding-top: 60px;
+    color: #ddd;
+    font-size: 16px;
+    margin: auto;
+    line-height: 50px;
+    max-width: 1200px;
+}
+
+.sub-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 48px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensures proper wrapping on smaller screens */
+}
+
+.teams {
+    margin: 10px;
+    padding: 22px;
+    max-width: 30%;
+    cursor: pointer;
+    transition: 0.4s;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.teams:hover {
+    background: #ddd;
+    border-radius: 12px;
+}
+
+.teams img {
+    width: 200px;
+    height: 200px;
+}
+
+.name {
+    padding: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #ddd;
+}
+
+.desig {
+    font-style: italic;
+    color: #888;
+}
+
+.about {
+    margin: 20px 0;
+    font-weight: lighter;
+    color: #ddd;
+}
+
+.header {
+    padding: 12px;
+    font-size: 20px;
+    color: #ddd;
+    line-height: 40px;
+}
+
+.logo-container {
+    margin: 20px auto;
+    padding: 22px;
+    max-width: 30%;
+    cursor: pointer;
+    transition: 0.4s;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.logo-container:hover {
+    background: #ddd;
+    border-radius: 12px;
+}
+
+.logo-image {
+    width: 100%;
+    height: auto;
+    max-width: 200px; /* Adjust as necessary */
+}
+
+.contact-section {
+    margin-top: 40px;
+    padding: 20px;
+    color: #ddd;
+    background: #211f1ff5;
+    border-radius: 12px;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}

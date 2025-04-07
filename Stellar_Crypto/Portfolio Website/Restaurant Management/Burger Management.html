@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaelvin's Burger Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Chaelvin's Burger Shop</h1>
+        <button onclick="logout()" class="logout-button" style="display: none;">Logout</button>
+
+        <div id="loginScreen">
+            <h2>Login</h2>
+            <input type="text" id="loginEmail" placeholder="Enter email"><br>
+            <input type="password" id="loginPassword" placeholder="Enter password"><br>
+            <button onclick="login()">Login</button>
+            <div class="account-options">
+                <p>Don't have an account?</p>
+                <button onclick="showRegister()">Create Account</button>
+            </div>
+        </div>
+
+        <div id="registerScreen" class="hidden">
+            <h2>Create an Account</h2>
+            <input type="text" id="email" placeholder="Enter email"><br>
+            <input type="password" id="password" placeholder="Enter password"><br>
+            <input type="password" id="repassword" placeholder="Confirm password"><br>
+            <button onclick="register()">Register</button>
+        </div>
+
+        <div id="orderScreen" class="hidden">
+            <h2>Order Burgers</h2>
+            <select id="burgerType">
+                <option value="25">Cheeseburger - $25</option>
+                <option value="35">Hamburger - $35</option>
+                <option value="45">Hotdogburger - $45</option>
+                <option value="35">Baconburger - $35</option>
+            </select>
+            <input type="number" id="burgerQty" placeholder="Quantity" min="1"><br>
+            <button onclick="addBurger()">Add Burger</button>
+            
+            <h2>Order Drinks</h2>
+            <select id="drinkType">
+                <option value="25">Coke - $25</option>
+                <option value="25">Sprite - $25</option>
+                <option value="25">Royal - $25</option>
+                <option value="55">Beer - $55</option>
+                <option value="40">Milk - $40</option>
+                <option value="20">Water - $20</option>
+            </select>
+            <input type="number" id="drinkQty" placeholder="Quantity" min="1"><br>
+            <button onclick="addDrink()">Add Drink</button>
+            
+            <h2>Total Bill: $<span id="totalBill">0</span></h2>
+            <button onclick="showReceipt()">Complete Order</button>
+        </div>
+
+        <div id="receiptScreen" class="hidden">
+            <h2>Order Summary</h2>
+            <p id="orderDetails"></p>
+            <h3>Total: $<span id="finalBill">0</span></h3>
+            <button onclick="continueShopping()">Order Again</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(37, 35, 35); /* Default text color for the body */
+    background: url('bg.jpg') no-repeat center center/cover; /* Example background image */
+    background-color: #000; /* Dark background color */
+}
+
+.header {
+    background: rgb(33, 33, 33);
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 20px;
+}
+
+.logo img {
+    height: 70px; /* Adjust the height as needed */
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+}
+
+.nav-buttons a {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background: black;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.nav-buttons a:hover {
+    background-color: #007BFF; /* Change background color on hover */
+    color: white; /* Ensure text color is readable on hover */
+}
+
+.get-started {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #007BFF;
+    background: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.get-started:hover {
+    background-color: #007BFF; /* Change background color on hover */
+    color: white; /* Ensure text color is readable on hover */
+}
+
+.cta button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #007BFF;
+    background: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.cta button:hover {
+    background-color: #007BFF; /* Change background color on hover */
+    color: white; /* Ensure text color is readable on hover */
+}
+
+
+.Chart {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        margin-top: 0;
+}
+
+/* Start */
+.Chartings {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin: 10vh;
+}
+
+.Heatmaps {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        margin-top: 0;
+}
+
+.Stock {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        margin-top: 0;
+}
+
+.Crypto {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        margin-top: 0;
+}
+.StockHeat {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin: 10vh;
+}
+
+
+.CryptoHeat {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin: 10vh;
+}
+/* FOOTER */
+
+.footer {
+    background: #333;
+    color: white;
+    padding: 20px 0; /* Increased padding for better spacing */
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 10px; /* Added margin for separation */
+}
+
+.footer a {
+    color: #007BFF;
+    text-decoration: none;
+    margin: 0 10px; /* Added margin between links */
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* TRIAL */
+
+/* Add the following media queries to make the layout responsive */
+
+/* For screens with a maximum width of 768px (tablets and smaller) */
+@media only screen and (max-width: 768px) {
+    .header {
+       flex-direction: column;
+       align-items: center;
+     }
+    .logo {
+       margin-right: 0;
+     }
+    .nav-buttons {
+       flex-direction: column;
+     }
+    .nav-buttons a {
+       margin: 10px 0;
+     }
+    .get-started {
+       margin-top: 10px;
+     }
+    .Chart,.Chartings,.Heatmaps,.Stock,.Crypto,.StockHeat,.CryptoHeat {
+       height: auto;
+       margin: 20px;
+     }
+    .footer {
+       padding: 10px 0;
+     }
+    .footer-links {
+       flex-direction: column;
+     }
+    .footer a {
+       margin: 10px 0;
+     }
+   }
+   
+   /* For screens with a maximum width of 480px (mobile devices) */
+   @media only screen and (max-width: 480px) {
+    .header {
+       padding: 10px;
+     }
+    .logo img {
+       height: 40px;
+     }
+    .nav-buttons a {
+       padding: 5px 10px;
+       font-size: 0.8em;
+     }
+    .get-started {
+       padding: 5px 10px;
+       font-size: 0.8em;
+     }
+    .Chart,.Chartings,.Heatmaps,.Stock,.Crypto,.StockHeat,.CryptoHeat {
+       margin: 10px;
+     }
+    .footer {
+       padding: 5px 0;
+     }
+    .footer a {
+       font-size: 0.8em;
+     }
+   }

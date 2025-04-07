@@ -1,0 +1,164 @@
+<!-- Doctor Management (doctor.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url('doctor.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        .doctor {
+            background: #28a745;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .doctor:hover {
+            background: #218838;
+        }
+        .remove-btn {
+            display: none;
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .doctor:hover .remove-btn {
+            display: inline-block;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background: #007bff;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .navbar a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="doctor.html">Doctors</a>
+        <a href="patient.html">Patients</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="container">
+        <h1>Doctor Management</h1>
+        <input type="text" id="searchDoctor" placeholder="Search doctor by name or ID" onkeyup="searchDoctor()">
+        <div id="doctorList"></div>
+        <button onclick="addDoctor()">Add Doctor</button>
+    </div>
+
+    <script>
+        function getDoctors() {
+            let doctors = localStorage.getItem('doctors');
+            return doctors ? JSON.parse(doctors) : [
+                { id: 'D1001', name: 'Dr. John Smith', age: 45, specialization: 'Cardiologist', schedule: 'Mon-Fri 9 AM - 3 PM' },
+                { id: 'D1002', name: 'Dr. Lisa Ray', age: 38, specialization: 'Pediatrician', schedule: 'Mon-Sat 10 AM - 5 PM' },
+                { id: 'D1003', name: 'Dr. Mark Allen', age: 50, specialization: 'Neurologist', schedule: 'Tue-Fri 8 AM - 2 PM' }
+            ];
+        }
+
+        function saveDoctors(doctors) {
+            localStorage.setItem('doctors', JSON.stringify(doctors));
+        }
+
+        function loadDoctors() {
+            let doctors = getDoctors();
+            let doctorList = document.getElementById('doctorList');
+            doctorList.innerHTML = '';
+            doctors.forEach(doctor => {
+                let newDoctor = document.createElement('div');
+                newDoctor.className = 'doctor';
+                newDoctor.setAttribute('data-id', doctor.id);
+                newDoctor.innerHTML = `<span onclick="redirectToDetails('${doctor.name}', '${doctor.age}', '${doctor.specialization}', '${doctor.schedule}', '${doctor.id}')">${doctor.id} - ${doctor.name} - ${doctor.specialization}</span>
+                                       <button class="remove-btn" onclick="removeDoctor('${doctor.id}', this)">Remove</button>`;
+                doctorList.appendChild(newDoctor);
+            });
+        }
+
+        function searchDoctor() {
+            let input = document.getElementById('searchDoctor').value.toLowerCase();
+            let doctors = document.getElementsByClassName('doctor');
+            for (let i = 0; i < doctors.length; i++) {
+                if (doctors[i].innerText.toLowerCase().includes(input)) {
+                    doctors[i].style.display = "flex";
+                } else {
+                    doctors[i].style.display = "none";
+                }
+            }
+        }
+
+        function redirectToDetails(name, age, specialization, schedule, id) {
+            window.location.href = `doctor_details.html?name=${encodeURIComponent(name)}&age=${age}&specialization=${encodeURIComponent(specialization)}&schedule=${encodeURIComponent(schedule)}&id=${id}`;
+        }
+
+        function addDoctor() {
+            let name = prompt("Enter doctor's name:");
+            let age = prompt("Enter doctor's age:");
+            let specialization = prompt("Enter specialization:");
+            let schedule = prompt("Enter schedule:");
+            if (name && age && specialization && schedule) {
+                let doctors = getDoctors();
+                let lastDoctor = doctors.length ? parseInt(doctors[doctors.length - 1].id.substring(1)) : 1000;
+                let doctorID = `D${lastDoctor + 1}`;
+                doctors.push({ id: doctorID, name, age, specialization, schedule });
+                saveDoctors(doctors);
+                loadDoctors();
+            }
+        }
+
+        function removeDoctor(id, button) {
+            let doctors = getDoctors().filter(doc => doc.id !== id);
+            saveDoctors(doctors);
+            loadDoctors();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (!localStorage.getItem('doctors')) {
+                saveDoctors(getDoctors());
+            }
+            loadDoctors();
+        });
+    </script>
+</body>
+</html>

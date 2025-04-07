@@ -1,0 +1,149 @@
+<!-- Billing System (billing.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url('billing.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        .patient {
+            background: #007bff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .patient:hover {
+            background: #0056b3;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background: #007bff;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .navbar a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="doctor.html">Doctors</a>
+        <a href="patient.html">Patients</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="billing.html">Billing</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="container">
+        <h1>Billing System</h1>
+        <input type="text" id="searchPatient" placeholder="Search patient by name or ID" onkeyup="searchPatient()">
+        <div id="patientList"></div>
+        <div id="billingDetails" style="display: none;"></div>
+    </div>
+
+    <script>
+        function getPatients() {
+            return JSON.parse(localStorage.getItem('patients')) || [];
+        }
+
+        function loadPatients() {
+            let patients = getPatients();
+            let patientList = document.getElementById('patientList');
+            patientList.innerHTML = '';
+            patients.forEach(patient => {
+                let newPatient = document.createElement('div');
+                newPatient.className = 'patient';
+                newPatient.innerHTML = `<span onclick="showBilling('${patient.id}')">${patient.id} - ${patient.name}</span>`;
+                patientList.appendChild(newPatient);
+            });
+        }
+
+        function searchPatient() {
+            let input = document.getElementById('searchPatient').value.toLowerCase();
+            let patients = document.getElementsByClassName('patient');
+            for (let i = 0; i < patients.length; i++) {
+                if (patients[i].innerText.toLowerCase().includes(input)) {
+                    patients[i].style.display = "block";
+                } else {
+                    patients[i].style.display = "none";
+                }
+            }
+        }
+
+        function showBilling(id) {
+            let patients = getPatients();
+            let patient = patients.find(p => p.id === id);
+            if (patient) {
+                document.getElementById('billingDetails').style.display = 'block';
+                document.getElementById('billingDetails').innerHTML = `
+                    <h2>Billing Details</h2>
+                    <p>Name: ${patient.name}</p>
+                    <p>Room: ${patient.room}</p>
+                    <p>Days Admitted: ${patient.daysAdmitted}</p>
+                    <p>Balance: $${patient.bill}</p>
+                    <input type="number" id="paymentAmount" placeholder="Enter amount to pay">
+                    <button onclick="processPayment('${patient.id}')">Pay</button>
+                `;
+            }
+        }
+
+        function processPayment(id) {
+            let amount = parseFloat(document.getElementById('paymentAmount').value);
+            let patients = getPatients();
+            let patientIndex = patients.findIndex(p => p.id === id);
+            
+            if (patientIndex !== -1) {
+                let patient = patients[patientIndex];
+                if (amount > 0) {
+                    patient.bill -= amount;
+                    if (patient.bill <= 0) {
+                        alert("Payment complete! Patient can be discharged.");
+                        patients.splice(patientIndex, 1); // Remove patient from list
+                    } else {
+                        alert("Partial payment received. Remaining balance: $" + patient.bill);
+                    }
+                    localStorage.setItem('patients', JSON.stringify(patients));
+                    document.getElementById('billingDetails').style.display = 'none';
+                    loadPatients();
+                } else {
+                    alert("Please enter a valid amount.");
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadPatients);
+    </script>
+</body>
+</html>

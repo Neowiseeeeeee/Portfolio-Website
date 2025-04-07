@@ -1,0 +1,264 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(37, 35, 35); /* Default text color for the body */
+    background: url('bg.jpg') no-repeat center center/cover; /* Example background image */
+    background-color: #000; /* Dark background color */
+}
+
+.header {
+    background: rgb(33, 33, 33);
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 20px;
+}
+
+.logo img {
+    height: 70px; /* Adjust the height as needed */
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+}
+
+.nav-buttons a {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background: black;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.nav-buttons a:hover {
+    background-color: #007BFF; /* Change background color on hover */
+    color: white; /* Ensure text color is readable on hover */
+}
+
+.get-started {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #007BFF;
+    background: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.get-started:hover {
+    background-color: #007BFF; /* Change background color on hover */
+    color: white; /* Ensure text color is readable on hover */
+}
+
+.cta button {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #007BFF;
+    background: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.cta button:hover {
+    background-color: #007BFF; /* Change background color on hover */
+    color: white; /* Ensure text color is readable on hover */
+}
+
+
+.TopStory {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.Head {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin-top: 0;
+}
+
+.Mini {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin: 10vh;
+}
+
+.Eco {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin-top: 0;
+}
+
+.EcoCal {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    margin: 10vh;
+}
+
+
+.cta {
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+    color: white; /* Ensures text is white */
+}
+
+.cta h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.footer {
+    background: #333;
+    color: white;
+    padding: 20px 0; /* Increased padding for better spacing */
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 10px; /* Added margin for separation */
+}
+
+.footer a {
+    color: #007BFF;
+    text-decoration: none;
+    margin: 0 10px; /* Added margin between links */
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* RESPONSIVENESS CODES */
+/* Add this to your existing CSS file */
+
+/* Make the layout responsive */
+@media only screen and (max-width: 1200px) {
+  .header {
+     flex-direction: column;
+     align-items: center;
+   }
+  .nav-buttons {
+     flex-direction: column;
+   }
+  .nav-buttons a {
+     margin: 10px 0;
+   }
+  .get-started {
+     margin-top: 20px;
+   }
+  .TopStory,.EcoCal {
+     height: auto;
+     padding: 20px;
+   }
+  .Head,.Eco {
+     height: auto;
+     padding: 10px;
+   }
+  .Mini {
+     margin: 20px;
+   }
+  .cta {
+     padding: 20px;
+   }
+  .footer {
+     padding: 10px 0;
+   }
+ }
+ 
+ @media only screen and (max-width: 768px) {
+  .header {
+     padding: 10px;
+   }
+  .logo img {
+     height: 40px;
+   }
+  .nav-buttons a {
+     font-size: 0.8em;
+   }
+  .get-started {
+     font-size: 0.8em;
+   }
+  .TopStory,.EcoCal {
+     padding: 10px;
+   }
+  .Head,.Eco {
+     padding: 5px;
+   }
+  .Mini {
+     margin: 10px;
+   }
+  .cta {
+     padding: 10px;
+   }
+  .footer {
+     padding: 5px 0;
+   }
+ }
+ 
+ @media only screen and (max-width: 480px) {
+  .header {
+     padding: 5px;
+   }
+  .logo img {
+     height: 30px;
+   }
+  .nav-buttons a {
+     font-size: 0.6em;
+   }
+  .get-started {
+     font-size: 0.6em;
+   }
+  .TopStory,.EcoCal {
+     padding: 5px;
+   }
+  .Head,.Eco {
+     padding: 2px;
+   }
+  .Mini {
+     margin: 5px;
+   }
+  .cta {
+     padding: 5px;
+   }
+  .footer {
+     padding: 2px 0;
+   }
+ }
